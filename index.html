@@ -3,9 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="author" content="Lary a pioral">
+    <meta name="description" content="Portifólio da Lary, 
+                                    desenvolvedora Full Stack especializado em criar experiências       
+                                    digitais incríveis. Conheça meus projetos e entre em contato.">
+
+    <meta name="robots" content="index, follow">       
+    <link rel="icon" type="image/svg+xml" href="./assets/img/favicon.svg">                         
+    <title>Portifólio da Lary</title>
 </head>
 <body>
-    
+
+    <!--CABEÇALHO DA PAGINA --> 
+    <a href="index.html" id="Titulo"> Portifolio</a>
+    <p> Olá Mundo </p>
+
+    <!-- Menu de Navegaçao-->
+     <nav>
+        <ul class="menu-list">
+            <li> <a href="#hero">Inicio</a></li>
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#projects">Projetos</a></li>
+            <li><a href="#contact">Contatos</a></li>
+        </ul>
+     </nav>
+
+     <main>
+        <!-- Seção Hero-->
+        <section id="hero" class="section-container hero-container">
+            <article class="hero-content">
+                <span>✌Olá, eu sou a Lary</span>
+                <h1> Desenvolvedora FullStack</h1>
+                <p>Transformo ideias em,
+                    códigos e crio experiências incríveis
+                </p>
+
+                <div class=" buttons-container">
+                    <a href="#contact" class="botao"> Entre em contato</a>
+                    <a href="#about" class="botao-outline"Saiba mais...></a>
+                </div>
+            </article>
+            <figure class="hero-image">
+                <img src="./assets/img/avatar_dev_woman.svg"
+                 alt="Foto do autor do site"
+                 class="float-animation">
+            
+            </figure>
+
+        </section>
+
+        <!-- Seção about-->
+        <section id="about" class="section-container about-container">
+            <figure class="about-image">
+                <img src="./assets/img/foto_dev_woman.svg"
+                 alt="Foto do autor do site"
+                 class="float-animation">
+            
+            </figure>
+
+            <!-- Conteudo da Seção About-->   
+             <article class="about-content">
+                <h2> Sobre mim</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Obcaecati aperiam quisquam atque delectus quasi illum fuga cumque, 
+                    ex tenetur vel consectetur voluptates reprehenderit provident numquam?
+                     Sapiente dignissimos reiciendis temporibus nostrum.</p>
+             <div class="about-buttons-data">
+
+                <!-- Links-->
+                <div class="buttons-container">
+                    <a href="https://github.com/outwake" target="_blank" class="botao"> GitHub</a>
+                    <a href="#" target="_blank" class="botao-outline"> Curriculo</a>
+                </div>
+
+                <!--Dados-->
+                <div class="data-container">
+
+                    <div class="data-item">
+                        <span class="data-number">100</span>
+                        <span class="data-label"> Seguidores</span>
+                    </div>
+
+                     <div class="data-item">
+                        <span class="data-number">10</span>
+                        <span class="data-label"> Repositórios</span>
+                    </div>
+                </div>
+             </div>
+                    </article> 
+        </section>
+
+        <!-- Seção Projects-->
+        <section id="projects" class="section-container projects-container">
+            <h2>Meus Projetos</h2>
+            <!-- Swiper Container-->
+             <div class="swiper projects-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <article class="project-card">
+                            <figure class="project-image">
+                                <img src="./assets/icons/languages/github.svg" alt="icon do Github">
+                            </figure>
+
+                            <!-- Conteudo do Projeto-->
+                             <div class="project-content">
+                                <h3>Projeto GitHub</h3>
+                                <p> Projeto desenvolvido no GitHub</p>
+
+                                <div class="project-tags">
+                                    <span class="tag"> github</span>
+                                </div>
+                             </div>
+                        </article>
+                    </div>
+                </div>
+             </div>
+        </section>
+
+        <!-- Seção contact-->
+        <section id="contact" class="section-container contact-container">
+            
+        </section>
+
+        <section>
+            
+        </section>
+     </main>
 </body>
 </html>
