@@ -1,6 +1,15 @@
 <!doctype html>
 <html lang="pt-br">
   <head>
+    <!-- Fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Fonte do Google - Poppins -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Lary a pioral" />
@@ -8,42 +17,45 @@
       name="description"
       content="Portifólio da Lary, 
                desenvolvedora Full Stack especializado em criar experiências       
-               digitais incríveis. Conheça meus projetos e entre em contato."/>
+               digitais incríveis. Conheça meus projetos e entre em contato."
+    />
 
     <meta name="robots" content="index, follow" />
     <link rel="icon" type="image/svg+xml" href="./assets/img/favicon.svg" />
-    <title>Portifólio da Lary</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <title>Portifólio da Lary, a Pioral 😎</title>
   </head>
 
   <body>
-    <div class="menu-content">
-    <!--CABEÇALHO DA PAGINA -->
-    <a href="index.html" id="Titulo"> Portifolio</a>
-    <p>Olá Mundo</p>
+    <header>
+      <div class="menu-content">
+        <!--CABEÇALHO DA PAGINA -->
+        <a href="index.html" id="titulo"> Portifolio</a>
 
-    <!-- Menu de Navegaçao-->
-    <nav>
-      <ul class="menu-list">
-        <li><a href="#hero">Inicio</a></li>
-        <li><a href="#about">Sobre</a></li>
-        <li><a href="#projects">Projetos</a></li>
-        <li><a href="#contact">Contatos</a></li>
-      </ul>
-    </nav>
-  </div>
+        <!-- Menu de Navegaçao-->
+        <nav>
+          <ul class="menu-list">
+            <li><a href="#hero">Inicio</a></li>
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#projects">Projetos</a></li>
+            <li><a href="#contact">Contatos</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-  
     <main>
       <!-- Seção Hero-->
       <section id="hero" class="section-container hero-container">
         <article class="hero-content">
-          <span>✌Olá, eu sou a Lary</span>
+          <span>✌Olá, eu sou a Lary, a Pioral 😘</span>
           <h1>Desenvolvedora FullStack</h1>
           <p>Transformo ideias em, códigos e crio experiências incríveis</p>
 
           <div class="buttons-container">
             <a href="#contact" class="botao"> Entre em contato</a>
-            <a href="#about" class="botao-outline" Saiba mais...></a>
+            <a href="#about" class="botao-outline"> Saiba mais...</a>
           </div>
         </article>
         <figure class="hero-image">
@@ -59,7 +71,7 @@
       <section id="about" class="section-container about-container">
         <figure class="about-image">
           <img
-            src="./assets/img/foto_dev_woman.svg"
+            src="./assets/img/44.svg"
             alt="Foto do autor do site"
             class="float-animation"
           />
@@ -67,24 +79,22 @@
 
         <!-- Conteudo da Seção About-->
         <article class="about-content">
-          <h2>Sobre mim</h2>
+          <h2>Sobre mim 🤗</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
-            aperiam quisquam atque delectus quasi illum fuga cumque, ex tenetur
-            vel consectetur voluptates reprehenderit provident numquam? Sapiente
-            dignissimos reiciendis temporibus nostrum.
+            Oi! Eu sou a Larissa, tenho 26 anos, sou carioca e formada em Análise e Desenvolvimento de Sistemas. 
+            Sempre curti tecnologia, mas agora decidi mergulhar de vez no mundo fullstack — tipo, de cabeça mesmo! 
+            <br/>Tô nessa fase de evolução constante, aprendendo, testando, errando e melhorando a cada dia.
+            <br/>Além do lado tech, também tenho meu momento gamer: 
+            gosto de me aventurar no World of Warcraft, porque ninguém é de ferro, né? 😄
+            Basicamente, tô construindo minha jornada na tecnologia enquanto equilibro código, 
+            café e uns bons momentos no mundo virtual.
           </p>
           <div class="about-buttons-data">
             <!-- Links-->
             <div class="buttons-container">
-              <a
-                href="https://github.com/outwake"
-                target="_blank"
-                class="botao"
-              >
-                GitHub</a
-              >
-              <a href="#" target="_blank" class="botao-outline"> Curriculo</a>
+              <a href="https://github.com/outwake"target="_blank"class="botao">
+                GitHub</a>
+              <a href="https://drive.google.com/file/d/1KA69PfVh2BGWfwuhEsoE7TMnMLMkQFLI/view?usp=sharing" target="_blank" class="botao-outline"> Curriculo</a>
             </div>
 
             <!--Dados-->
@@ -130,10 +140,16 @@
 
                   <!--Links do Projeto-->
                   <div class="project-buttons">
-                    <a href="https://github.com/outwake" target="_blank" class="botao botao-sn">
-                      GitHub</a>
+                    <a
+                      href="https://github.com/outwake"
+                      target="_blank"
+                      class="botao botao-sn"
+                    >
+                      GitHub</a
+                    >
                     <a href="#" target="_blank" class="botao botao-sn">
-                      Deploy</a>
+                      Deploy</a
+                    >
                   </div>
                 </div>
               </article>
@@ -141,67 +157,104 @@
           </div>
 
           <!-- Botões de Navegação -->
-           <div class="swiper-button-next"></div>
-           <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
 
-           <!-- Paginação-->
-            <div class="swiper-pagination"></div>
+          <!-- Paginação-->
+          <div class="swiper-pagination"></div>
         </div>
       </section>
 
       <!-- Seção contact-->
       <section id="contact" class="section-container contact-container">
-
         <!--Redes sociais-->
         <article class="contact-info">
-            <h2>Entre em contato</h2>
-            <p>Sinta-se a vontade para entrar em contato comigo!</p>
+          <h2>Entre em contato</h2>
+          <p>Sinta-se a vontade para entrar em contato comigo!</p>
 
-            <!-- Links para as Redes Sociais-->
-            <div class="social-container">
-                <a href="https://www.linkedin.com/in/larissa-ferreira-mendon%C3%A7a-49655a185/" target="_blank" class="social-icon" aria-label="Linkedin">
-                   <img src="./assets/icons/social/linkedin.svg" alt="Link para o LinkedIn">
-                </a>
-                <a href="https://github.com/outwake" target="_blank" class="social-icon" aria-label="GitHub">
-                   <img src="./assets/icons/social/github.svg" alt="Link para o GitHub"> 
-                </a>
+          <!-- Links para as Redes Sociais-->
+          <div class="social-container">
+            <a
+              href="https://www.linkedin.com/in/larissa-ferreira-mendon%C3%A7a-49655a185/"
+              target="_blank"
+              class="social-icon"
+              aria-label="Linkedin"
+            >
+              <img
+                src="./assets/icons/social/linkedin.svg"
+                alt="Link para o LinkedIn"
+              />
+            </a>
+            <a
+              href="https://github.com/outwake"
+              target="_blank"
+              class="social-icon"
+              aria-label="GitHub"
+            >
+              <img
+                src="./assets/icons/social/github.svg"
+                alt="Link para o GitHub"
+              />
+            </a>
 
-                <a href="https://www.instagram.com/mrsherlokia/" target="_blank" class="social-icon" aria-label="Instagram">
-                   <img src="./assets/icons/social/instagram.svg" alt="Link para o Instagram">
-                </a>
-            </div>
+            <a
+              href="https://www.instagram.com/mrsherlokia/"
+              target="_blank"
+              class="social-icon"
+              aria-label="Instagram"
+            >
+              <img
+                src="./assets/icons/social/instagram.svg"
+                alt="Link para o Instagram"
+              />
+            </a>
+          </div>
         </article>
 
         <form id="formulario">
+          <label for="nome">Nome</label>
+          <input
+            id="nome"
+            name="nome"
+            type="text"
+            placeholder="Digite o seu nome completo:"
+          />
+          <span id="erro-nome"></span>
 
-            <label for="nome">Nome</label>
-            <input id="nome" name="nome" type="text" placeholder="Digite o seu nome completo:">
-            <span id="erro-nome"></span>
+          <label for="email">E-mail</label>
+          <input
+            id="email"
+            name="email"
+            type="text"
+            placeholder="Digite o seu email:"
+          />
+          <span id="erro-email"></span>
 
-            <label for="email">E-mail</label>
-            <input id="email" name="email" type="text" placeholder="Digite o seu email:">
-            <span id="erro-email"></span>
+          <label for="assunto">Assunto</label>
+          <input
+            id="assunto"
+            name="assunto"
+            type="text"
+            placeholder="Digite o assunto da mensagem:"
+          />
+          <span id="erro-assunto"></span>
 
-            <label for="assunto">Assunto</label>
-            <input id="assunto" name="assunto" type="text" placeholder="Digite o assunto da mensagem:">
-            <span id="erro-assunto"></span>
+          <label for="mensagem">Mensagem</label>
+          <input
+            id="mensagem"
+            name="mensagem"
+            placeholder="Digite a sua mensagem:"
+          />
+          <span id="erro-mensagem"></span>
 
-            <label for="mensagem">Mensagem</label>
-            <input id="mensagem" name="mensagem" placeholder="Digite a sua mensagem:">
-            <span id="erro-mensagem"></span>
-
-            <button class="botao" type="submit">Enviar Mensagem</button>
+          <button class="botao" type="submit">Enviar Mensagem</button>
         </form>
-
       </section>
-
     </main>
 
-     <!-- Rodapé da página -->
+    <!-- Rodapé da página -->
     <footer>
-         <p>Desenvolvido por Lary, a Pioral ❤. Todos os direitos reservados.</p>
+      <p>Desenvolvido por Lary, a Pioral ❤. Todos os direitos reservados.</p>
     </footer>
-
-    
   </body>
 </html>
