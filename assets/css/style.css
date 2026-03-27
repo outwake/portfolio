@@ -289,6 +289,11 @@ body.dark header a:hover {
     color: var(--gray-400);
 }
 
+.hero-image{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
 .hero-image img{
     width: 100%;
     max-width: 100%;
@@ -945,6 +950,10 @@ footer {
     }
     .about-content p{
         font-size: var(--text-base);
+    }
+    
+    .about-content .buttons-container{
+        align-items: center;
     }
     .about-buttons-data{
         flex-direction: column;
