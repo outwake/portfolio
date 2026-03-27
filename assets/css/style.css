@@ -292,11 +292,11 @@ body.dark header a:hover {
 .hero-image{
     display: flex;
     justify-content: center;
-    width: 40%;
+    width: 20%;
 }
 .hero-image img{
-    width: 90%;
-    max-width: 90%;
+    width: 80%;
+    max-width: 80%;
     border-radius: var(--radius-xl);
 }
 
