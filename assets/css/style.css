@@ -292,7 +292,7 @@ body.dark header a:hover {
 .hero-image{
     display: flex;
     justify-content: center;
-    width: 50%;
+    width: 40%;
 }
 .hero-image img{
     width: 90%;
