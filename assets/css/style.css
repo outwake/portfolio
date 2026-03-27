@@ -618,7 +618,113 @@ footer {
 
 /* Responsividade - Tablet*/
 @media screen and (max-width: 1024px) {
-    
+    /*Menu*/
+    .menu-content{
+        justify-content: center;
+    }
+    .menu-list{
+        display: none;
+    }
+    header{
+        border-bottom: none ;
+        box-shadow: var(--shadow-lg);
+    }
+
+
+    /*Hero*/
+    .hero-container{
+        flex-direction: column-reverse;
+        gap: var(--spacing-md);
+    }
+    .buttons-container{
+        padding: 0 7rem;
+        justify-content: space-around;
+    }
+    .buttons-container .botao, .buttons-container .botao-outline{   
+        margin: 0 1rem;
+        padding: 0.75rem 1rem;
+        font-size: var(--text-xl);
+        white-space: nowrap;
+    }
+    .hero-container{
+        justify-content: center;
+    }
+    .hero-container span, .hero-container h1, .hero-container p{
+        text-align: center;
+    }
+    .hero-content span{
+        font-size: var(--text-2xl);
+       
+    }
+    .hero-content p{
+        font-size: var(--text-xl);
+    }
+
+    /*About*/
+    .about-container{
+        flex-direction: column;
+        text-align: center;
+    }
+    .about-container p{
+        font-size: var(--text-xl);
+    }
+    .about-image img{
+        max-width: 30rem;
+    }
+
+    .about-buttons-data{
+        flex-direction: column;
+        align-items: center;
+    }
+     .about-buttons-data .botao, .about-buttons-data .botao-outline{
+        font-size: var(--text-2xl);
+     }
+    .data-label{
+        font-size: var(--text-lg);
+    }
+
+    /*Projetos*/
+    .section-container.projects-container{
+        margin: 0 auto;
+    }
+    .projects-swiper{
+        padding: 0 var(--spacing-xl);
+    }
+
+
+    /* Contato*/
+    .contact-container{
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        width: 100%;
+        margin: 0 auto;
+    }
+     .contact-info{
+        width: 100%;
+        text-align: center;
+    }
+
+    .social-icon{
+        width: 10%;
+    }
+    .contact-info p{
+        font-size: var(--text-xl);
+    }
+    form{
+        width: 100%;
+    }
+    form label, form input{
+        font-size: var(--text-xl);
+    }
+
+    form button.botao{
+    margin: 2rem 4rem 3rem;
+    font-size: var(--text-xl);
+    }
+    footer p{
+        font-size: var(--text-lg);
+
+    }
 }
 
  /*Responsividade - Celular*/
@@ -740,6 +846,11 @@ footer {
 
     form{
         width: 100%;
+    }
+
+    footer p{
+        font-size: var(--text-3xl);
+
     }
 }
 /*.success-container{
