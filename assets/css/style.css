@@ -908,12 +908,17 @@ footer {
 
     /* Hero */
     .hero-container{
+        margin-top: 2.5rem;
         flex-direction: column-reverse;
         gap: var(--spacing-xs);
     }
     .hero-content{
         gap: var(--spacing-xs);
         width: 100%;
+        margin-top: 1rem;
+    }
+    .hero-content p, .hero-content h1{
+        margin-bottom: 1rem;
     }
     .buttons-container{
         display: flex;
@@ -937,7 +942,7 @@ footer {
 
     .about-container{
         flex-direction: column;
-        margin: var(--spacing-lg) 0.5rem;
+        margin: 0 0.5rem;
         padding: var(--spacing-md);
     }
 
