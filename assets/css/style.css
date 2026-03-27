@@ -848,10 +848,7 @@ footer {
         width: 100%;
     }
 
-    footer p{
-        font-size: var(--text-3xl);
 
-    }
 }
 /*.success-container{
     display: flex;
