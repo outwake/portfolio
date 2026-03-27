@@ -295,8 +295,8 @@ body.dark header a:hover {
     width: 50%;
 }
 .hero-image img{
-    width: 100%;
-    max-width: 100%;
+    width: 90%;
+    max-width: 90%;
     border-radius: var(--radius-xl);
 }
 
