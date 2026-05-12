@@ -26,28 +26,49 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
     <!-- SWIPER CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <!-- Devicon CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <title>Portfólio da Lary, a Pioral 😎</title>
   </head>
 
   <body>
+    <div id="mouse-glow"></div>
     <header>
       <div class="menu-content">
         <!--CABEÇALHO DA PAGINA -->
-        <a href="index.html" id="titulo"> Portfólio Dev Lary :)(:</a>
+        <a href="index.html" id="titulo" aria-label="Página inicial">
+          <span class="logo-name">&lt;Outwake</span><span class="logo-tag"><span class="logo-emoji">👾</span>/&gt;</span>
+        </a>
 
         
-        <!-- Menu de Navegaçao-->
-        <nav>
-          <ul class="menu-list">
-            <li><a href="#hero">Inicio</a></li>
-            <li><a href="#about">Sobre</a></li>
-            <li><a href="#projects">Projetos</a></li>
-            <li><a href="#contact">Contatos</a></li>
-          </ul>
-        </nav>
-          <div class="theme-toggle" id="toggle-theme">
-        <div class="toggle-circle"></div>
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-btn" id="mobile-btn" aria-label="Open Menu">
+          <i class="ph ph-list"></i>
+        </button>
+
+        <!-- Right Menu Container (Nav + Theme) -->
+        <div class="right-menu" id="right-menu">
+          <nav>
+            <ul class="menu-list">
+              <li><a href="#hero">Inicio</a></li>
+              <li><a href="#about">Sobre</a></li>
+              <li><a href="#projects">Projetos</a></li>
+              <li><a href="#stacks">Stacks</a></li>
+              <li><a href="#contact">Contatos</a></li>
+            </ul>
+          </nav>
+          <button class="theme-btn" id="toggle-theme" aria-label="Toggle Theme">
+            <i class="ph ph-moon"></i>
+          </button>
         </div>
 
 
@@ -55,25 +76,33 @@
     </header>
 
     <main>
-      <!-- Seção Hero-->
       <section id="hero" class="section-container hero-container">
+        <!-- Floating Bubbles Background -->
+        <div class="floating-bg">
+          <div class="floating-bubble">Games</div>
+          <div class="floating-bubble">Dev</div>
+          <div class="floating-bubble">React</div>
+          <div class="floating-bubble">Tailwind</div>
+          <div class="floating-bubble">CSS</div>
+          <div class="floating-bubble">TypeORM</div>
+          <div class="floating-bubble">GitHub</div>
+          <div class="floating-bubble">Tech</div>
+          <div class="floating-bubble">JS</div>
+          <div class="floating-bubble">HTML</div>
+          <div class="floating-bubble">NodeJS</div>
+          <div class="floating-bubble">MySQL</div>
+        </div>
+
         <article class="hero-content">
-          <span>✌Olá, eu sou a Lary, a Pioral 😘</span>
-          <h1>Desenvolvedora FullStack</h1>
-          <p>Transformo ideias em, códigos e crio experiências incríveis</p>
+          <h1 class="hero-title">Hello, Eu sou a Lary<br>Desenvolvedora FullStack</h1>
+          <p class="hero-subtitle">Transformando ideias em códigos e experiências incríveis.</br>
+          Venha conhecer um pouco do meu universo 💜</p>
 
           <div class="buttons-container">
-            <a href="#contact" class="botao"> Entre em contato</a>
-            <a href="#about" class="botao-outline"> Saiba mais...</a>
+            <a href="#projects" class="botao">Meus Projetos</a>
+            <a href="#about" class="botao-outline">Sobre Mim</a>
           </div>
         </article>
-        <figure class="hero-image">
-          <img
-            src="./assets/img/lary_horizontal.svg"
-            alt="Foto do autor do site"
-            class="float-animation"
-          />
-        </figure>
       </section>
 
       <!-- Seção about-->
@@ -96,6 +125,40 @@
 
           <!-- Paginação-->
           <div class="swiper-pagination"></div>
+        </div>
+      </section>
+
+      <!-- Seção Stacks-->
+      <section id="stacks" class="section-container stacks-container">
+        <h2>Minhas Stacks 👾</h2>
+        <div class="card-alex tech-stack-card">
+          
+          <div class="stacks-flex">
+            <div class="stack-item">
+              <i class="devicon-react-original"></i>
+              <span>React</span>
+            </div>
+            <div class="stack-item">
+              <i class="devicon-nodejs-plain"></i>
+              <span>Node.js</span>
+            </div>
+            <div class="stack-item">
+              <i class="devicon-javascript-plain"></i>
+              <span>JavaScript</span>
+            </div>
+            <div class="stack-item">
+              <i class="devicon-html5-plain"></i>
+              <span>HTML5</span>
+            </div>
+            <div class="stack-item">
+              <i class="devicon-css3-plain"></i>
+              <span>CSS3</span>
+            </div>
+            <div class="stack-item">
+              <i class="devicon-git-plain"></i>
+              <span>Git</span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -179,11 +242,12 @@
           <span id="erro-assunto"></span>
 
           <label for="mensagem">Mensagem</label>
-          <input
+          <textarea
             id="mensagem"
             name="mensagem"
             placeholder="Digite a sua mensagem:"
-          />
+            rows="3"
+          ></textarea>
           <span id="erro-mensagem"></span>
 
           <button class="botao" type="submit">Enviar Mensagem</button>

@@ -42,7 +42,7 @@ async function getAboutGitHub(){
             <div class="buttons-container">
               <a href="${perfil.html_url}" target="_blank"class="botao">
                 GitHub</a>
-              <a href="https://drive.google.com/file/d/1KA69PfVh2BGWfwuhEsoE7TMnMLMkQFLI/view?usp=sharing" target="_blank" class="botao-outline"> Curriculo</a>
+              <a href="https://drive.google.com/file/d/1GfOO0aQuZ16L14tw_DB71J0pGwGTzZ2N/view?usp=sharing" target="_blank" class="botao-outline"> Curriculo</a>
             </div>
 
             <!--Dados-->
@@ -70,11 +70,23 @@ async function getAboutGitHub(){
 async function getProjectsGitHub(){
 //Função buscar os dados dos projetos
  try {
-        //Requisição do tipo GET para a API do Github
-        const resposta = await fetch('https://api.github.com/users/outwake/repos?sort=update&per_pages=6')
+        const USUARIO = 'outwake';
+        const ORGANIZACAO = 'CodeSeven-Turma-JavaScript-13'; // Organização vinculada ao perfil
 
-        //Converter a resposta para Json
-        const repositorios = await resposta.json();
+        //Busca em paralelo: repos do perfil pessoal + repos da organização
+        const [respostaPessoal, respostaOrg] = await Promise.all([
+            fetch(`https://api.github.com/users/${USUARIO}/repos?sort=updated&per_page=6`),
+            fetch(`https://api.github.com/orgs/${ORGANIZACAO}/repos?sort=updated&per_page=6`)
+        ]);
+
+        const reposPessoais = await respostaPessoal.json();
+        const reposOrg = respostaOrg.ok ? await respostaOrg.json() : [];
+
+        // Combina tudo e remove duplicatas pelo nome
+        const todosRepos = [...(Array.isArray(reposPessoais) ? reposPessoais : []), ...(Array.isArray(reposOrg) ? reposOrg : [])];
+        const repositorios = todosRepos.filter((repo, index, self) =>
+            index === self.findIndex(r => r.name === repo.name)
+        );
 
         swiperWrapper.innerHTML = '';
 
@@ -123,34 +135,31 @@ async function getProjectsGitHub(){
          : `<span class="tag">${linguagem}</span>`;
 
         //Botões de ação(renderização condicional do deploy)
+        const deployBtn = repositorio.homepage
+            ? `<a href="${repositorio.homepage}" target="_blank" class="botao-pill botao-deploy">
+                <i class="ph ph-rocket-launch"></i> Deploy
+               </a>`
+            : '';
 
         const botoesAcao= `<!--Links do Projeto-->
                   <div class="project-buttons">
-                    <a
-                      href="${repositorio.html_url}"
-                      target="_blank"
-                      class="botao botao-sn"
-                    >
-                      GitHub</a
-                    >
-                    
-                    ${repositorio.homepage ?
-                    `<a href="${repositorio.homepage}" target="_blank" class="botao botao-sn">
-                      Deploy</a>`
-                      : ''}
+                    ${deployBtn}
+                    <a href="${repositorio.html_url}" target="_blank" class="botao-pill botao-github">
+                      <i class="ph ph-github-logo"></i> GitHub
+                    </a>
                   </div>`
+
             
             //construindo o card
 
             swiperWrapper.innerHTML += `
             <div class="swiper-slide">
-              <article class="project-card">
-                <figure class="project-image">
-                  <img
-                    src="${urlIcone}"
-                    alt="${linguagem}"
-                  />
-                </figure>
+              <article class="card-alex project-card">
+                <div class="card-gradient">
+                  <figure class="card-icon">
+                    <img src="${urlIcone}" alt="${linguagem}" />
+                  </figure>
+                </div>
 
                 <!-- Conteudo do Projeto-->
                 <div class="project-content">
@@ -292,19 +301,28 @@ formulario.addEventListener('submit', function(event){
 
 //botao tema
 const botaoTema = document.querySelector("#toggle-theme");
+const iconeTema = botaoTema.querySelector("i");
 
 botaoTema.addEventListener("click", () => {
     document.body.classList.toggle("dark");
 
     if(document.body.classList.contains("dark")){
         localStorage.setItem("tema", "dark");
+        iconeTema.classList.remove("ph-moon");
+        iconeTema.classList.add("ph-sun");
     } else {
         localStorage.setItem("tema", "light");
+        iconeTema.classList.remove("ph-sun");
+        iconeTema.classList.add("ph-moon");
     }
 });
 
 if(localStorage.getItem("tema") === "dark"){
     document.body.classList.add("dark");
+    if(iconeTema) {
+        iconeTema.classList.remove("ph-moon");
+        iconeTema.classList.add("ph-sun");
+    }
 }
 
 //Executar a função
@@ -312,3 +330,52 @@ getAboutGitHub();
 
 //Executar a função GetProjects
 getProjectsGitHub();
+
+// Efeito Mouse Glow (Aurora Interativa)
+const mouseGlow = document.getElementById('mouse-glow');
+if (mouseGlow) {
+    document.addEventListener('mousemove', (e) => {
+        // e.clientX e e.clientY pegam a posição exata do mouse na tela visível
+        mouseGlow.style.left = e.clientX + 'px';
+        mouseGlow.style.top = e.clientY + 'px';
+    });
+}
+
+// Menu Hamburger Mobile
+const mobileBtn = document.getElementById('mobile-btn');
+const rightMenu = document.getElementById('right-menu');
+const mobileBtnIcon = mobileBtn ? mobileBtn.querySelector('i') : null;
+const menuLinks = document.querySelectorAll('.menu-list a');
+
+if (mobileBtn && rightMenu) {
+    mobileBtn.addEventListener('click', () => {
+        rightMenu.classList.toggle('active');
+        
+        // Troca o ícone de Hamburger (ph-list) para X (ph-x)
+        if (rightMenu.classList.contains('active')) {
+            mobileBtnIcon.classList.remove('ph-list');
+            mobileBtnIcon.classList.add('ph-x');
+        } else {
+            mobileBtnIcon.classList.remove('ph-x');
+            mobileBtnIcon.classList.add('ph-list');
+        }
+    });
+
+    // Fecha o menu ao clicar em qualquer link
+    menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            rightMenu.classList.remove('active');
+            mobileBtnIcon.classList.remove('ph-x');
+            mobileBtnIcon.classList.add('ph-list');
+        });
+    });
+}
+
+// Auto-resize do textarea de mensagem
+const mensagemTextarea = document.getElementById('mensagem');
+if (mensagemTextarea) {
+    mensagemTextarea.addEventListener('input', function () {
+        this.style.height = 'auto';
+        this.style.height = this.scrollHeight + 'px';
+    });
+}
