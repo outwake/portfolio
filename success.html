@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt-br">
   <head>
-     <!-- Fontes do Google -->
+   <!-- Fontes do Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
@@ -10,10 +10,10 @@
       href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
       rel="stylesheet"
     />
+  
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Lary a pioral" />
-    
     <meta
       name="description"
       content="Portfólio da Lary, 
@@ -23,25 +23,55 @@
 
     <meta name="robots" content="index, follow" />
     <link rel="icon" type="image/svg+xml" href="./assets/img/favicon.svg" />
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Portfólio da Lary</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <!-- SWIPER CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <!-- Devicon CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <title>Portfólio da Lary, a Pioral 😎</title>
 
   </head>
   <body>
+    <div id="mouse-glow"></div>
 <header>
-      <div class="menu-content">
+  <div class="menu-content">
         <!--CABEÇALHO DA PAGINA -->
-        <a href="index.html" id="titulo"> Portfolio Dev Lary:)(:</a>
+        <a href="index.html" id="titulo" aria-label="Página inicial">
+          <span class="logo-name">&lt;Outwake</span><span class="logo-tag"><span class="logo-emoji">👾</span>/&gt;</span>
+        </a>
 
-        <!-- Menu de Navegaçao-->
-        <nav>
-          <ul class="menu-list">
-            <li><a href="#hero">Inicio</a></li>
-            <li><a href="#about">Sobre</a></li>
-            <li><a href="#projects">Projetos</a></li>
-            <li><a href="#contact">Contatos</a></li>
-          </ul>
-        </nav>
+        
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-btn" id="mobile-btn" aria-label="Open Menu">
+          <i class="ph ph-list"></i>
+        </button>
+
+        <!-- Right Menu Container (Nav + Theme) -->
+        <div class="right-menu" id="right-menu">
+          <nav>
+            <ul class="menu-list">
+              <li><a href="index.html">Inicio</a></li>
+              <li><a href="index.html#about">Sobre</a></li>
+              <li><a href="index.html#projects">Projetos</a></li>
+              <li><a href="index.html#stacks">Stacks</a></li>
+              <li><a href="index.html#contact">Contatos</a></li>
+            </ul>
+          </nav>
+          <button class="theme-btn" id="toggle-theme" aria-label="Toggle Theme">
+            <i class="ph ph-moon"></i>
+          </button>
+        </div>
+
+
       </div>
     </header>
 
@@ -71,5 +101,7 @@
     <footer>
       <p>Desenvolvido por Lary, a Pioral ❤. Todos os direitos reservados.</p>
     </footer>
+    <!-- Script JavaScript principal-->
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
