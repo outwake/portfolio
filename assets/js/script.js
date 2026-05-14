@@ -11,6 +11,7 @@ const formulario = document.querySelector("#formulario")
 //Função de preenchimento da seção about
 async function getAboutGitHub(){
     try {
+        if (!about) return;
         //Requisição do tipo GET para a API do Github
         const resposta = await fetch('https://api.github.com/users/outwake')
 
@@ -70,6 +71,7 @@ async function getAboutGitHub(){
 async function getProjectsGitHub(){
 //Função buscar os dados dos projetos
  try {
+        if (!swiperWrapper) return;
         const USUARIO = 'outwake';
         const ORGANIZACAO = 'CodeSeven-Turma-JavaScript-13'; // Organização vinculada ao perfil
 
@@ -241,81 +243,85 @@ function iniciarSwiper() {
 }
 
 //Enviando o email
-formulario.addEventListener('submit', function(event){
-  event.preventDefault();
+if (formulario) {
+  formulario.addEventListener('submit', function(event){
+    event.preventDefault();
 
-  document.querySelectorAll('form span').forEach(span => StaticRange.innerHTML ='');
+    document.querySelectorAll('form span').forEach(span => span.innerHTML ='');
 
-  let isValid = true;
+    let isValid = true;
 
-  //Nome
-  const nome = document.querySelector('#nome');
-  const erroNome = document.querySelector('#erro-nome');
+    //Nome
+    const nome = document.querySelector('#nome');
+    const erroNome = document.querySelector('#erro-nome');
 
-  if(nome.value.trim().length < 3){
-    erroNome.innerHTML = 'O nome deve ter no minimo 3 caracteres.'
-    if(isValid) nome.focus();
-    isValid = false;
-  }
+    if(nome.value.trim().length < 3){
+      erroNome.innerHTML = 'O nome deve ter no minimo 3 caracteres.'
+      if(isValid) nome.focus();
+      isValid = false;
+    }
 
-  //Email
-  const email = document.querySelector('#email');
-  const erroEmail = document.querySelector('#erro-email');
+    //Email
+    const email = document.querySelector('#email');
+    const erroEmail = document.querySelector('#erro-email');
 
-  if(!email.value.trim().match(emailRegex)){
-    erroEmail.innerHTML = 'Digite um endereço de e-mail válido!'
-    if(isValid) email.focus();
-    isValid = false;
-  }
+    if(!email.value.trim().match(emailRegex)){
+      erroEmail.innerHTML = 'Digite um endereço de e-mail válido!'
+      if(isValid) email.focus();
+      isValid = false;
+    }
 
-  //Assunto
-  const assunto = document.querySelector('#assunto');
-  const erroAssunto = document.querySelector('#erro-assunto');
+    //Assunto
+    const assunto = document.querySelector('#assunto');
+    const erroAssunto = document.querySelector('#erro-assunto');
 
-  if(assunto.value.trim().length < 5){
-    erroAssunto.innerHTML = 'O assunto deve ter no minimo 5 caracteres.'
-    if(isValid) assunto.focus();
-    isValid = false;
-  }
+    if(assunto.value.trim().length < 5){
+      erroAssunto.innerHTML = 'O assunto deve ter no minimo 5 caracteres.'
+      if(isValid) assunto.focus();
+      isValid = false;
+    }
 
-   //Mensagem
-  const mensagem = document.querySelector('#mensagem');
-  const erroMensagem = document.querySelector('#erro-mensagem');
+     //Mensagem
+    const mensagem = document.querySelector('#mensagem');
+    const erroMensagem = document.querySelector('#erro-mensagem');
 
-  if(mensagem.value.trim().length < 5){
-    erroMensagem.innerHTML = 'A mensagem não pode ser vazia.'
-    if(isValid) mensagem.focus();
-    isValid = false;
-  }
+    if(mensagem.value.trim().length < 5){
+      erroMensagem.innerHTML = 'A mensagem não pode ser vazia.'
+      if(isValid) mensagem.focus();
+      isValid = false;
+    }
 
-  //Enviando o conteudo
-  if(isValid){
-    const submitButton = formulario.querySelector('button[type = "submit"]')
-    submitButton.disabled= true;
-    submitButton.textContent ="Enviando..."
-     
-    formulario.submit();
-  }
+    //Enviando o conteudo
+    if(isValid){
+      const submitButton = formulario.querySelector('button[type = "submit"]')
+      submitButton.disabled= true;
+      submitButton.textContent ="Enviando..."
+       
+      formulario.submit();
+    }
 
-})
+  })
+}
 
 //botao tema
 const botaoTema = document.querySelector("#toggle-theme");
-const iconeTema = botaoTema.querySelector("i");
+const iconeTema = botaoTema ? botaoTema.querySelector("i") : null;
 
-botaoTema.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
+if (botaoTema && iconeTema) {
+    botaoTema.addEventListener("click", () => {
+        document.body.classList.toggle("dark");
 
-    if(document.body.classList.contains("dark")){
-        localStorage.setItem("tema", "dark");
-        iconeTema.classList.remove("ph-moon");
-        iconeTema.classList.add("ph-sun");
-    } else {
-        localStorage.setItem("tema", "light");
-        iconeTema.classList.remove("ph-sun");
-        iconeTema.classList.add("ph-moon");
-    }
-});
+        if(document.body.classList.contains("dark")){
+            localStorage.setItem("tema", "dark");
+            iconeTema.classList.remove("ph-moon");
+            iconeTema.classList.add("ph-sun");
+        } else {
+            localStorage.setItem("tema", "light");
+            iconeTema.classList.remove("ph-sun");
+            iconeTema.classList.add("ph-moon");
+        }
+    });
+}
 
 if(localStorage.getItem("tema") === "dark"){
     document.body.classList.add("dark");
@@ -350,14 +356,17 @@ const menuLinks = document.querySelectorAll('.menu-list a');
 if (mobileBtn && rightMenu) {
     mobileBtn.addEventListener('click', () => {
         rightMenu.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
         
         // Troca o ícone de Hamburger (ph-list) para X (ph-x)
-        if (rightMenu.classList.contains('active')) {
-            mobileBtnIcon.classList.remove('ph-list');
-            mobileBtnIcon.classList.add('ph-x');
-        } else {
-            mobileBtnIcon.classList.remove('ph-x');
-            mobileBtnIcon.classList.add('ph-list');
+        if (mobileBtnIcon) {
+            if (rightMenu.classList.contains('active')) {
+                mobileBtnIcon.classList.remove('ph-list');
+                mobileBtnIcon.classList.add('ph-x');
+            } else {
+                mobileBtnIcon.classList.remove('ph-x');
+                mobileBtnIcon.classList.add('ph-list');
+            }
         }
     });
 
@@ -365,8 +374,11 @@ if (mobileBtn && rightMenu) {
     menuLinks.forEach(link => {
         link.addEventListener('click', () => {
             rightMenu.classList.remove('active');
-            mobileBtnIcon.classList.remove('ph-x');
-            mobileBtnIcon.classList.add('ph-list');
+            document.body.classList.remove('menu-open');
+            if (mobileBtnIcon) {
+                mobileBtnIcon.classList.remove('ph-x');
+                mobileBtnIcon.classList.add('ph-list');
+            }
         });
     });
 }
