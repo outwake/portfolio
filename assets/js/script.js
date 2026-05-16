@@ -23,25 +23,24 @@ async function getAboutGitHub(){
         about.innerHTML= `
         <figure class="about-image">
           <img
-            src="${perfil.avatar_url}" alt="${perfil.name} "class="float-animation" />
+            src="${perfil.avatar_url || 'https://github.com/outwake.png'}" alt="${perfil.name || 'Larissa'} "class="float-animation" />
         </figure>
 
         <!-- Conteudo da Seção About-->
         <article class="about-content">
           <h2>Sobre mim 🤗</h2>
           <p>
-            Oi! Eu sou a Larissa, tenho 26 anos, sou carioca e formada em Análise e Desenvolvimento de Sistemas. 
-            Sempre curti tecnologia, mas agora decidi mergulhar de vez no mundo fullstack — tipo, de cabeça mesmo! 
-            <br/>Tô nessa fase de evolução constante, aprendendo, testando, errando e melhorando a cada dia.
+            Oi! Eu sou a Larissa, tenho 26 anos, sou carioca e formada em <span class="logo-name">Análise e Desenvolvimento de Sistemas</span>. 
+            Sempre curti tecnologia, mas agora decidi mergulhar de vez no <span class="logo-name">mundo fullstack</span> — tipo, de cabeça mesmo! 
+            <br/>Tô nessa fase de <span class="logo-name">evolução constante</span>, aprendendo, testando, errando e melhorando a cada dia.
             <br/>Além do lado tech, também tenho meu momento gamer: 
-            gosto de me aventurar no World of Warcraft, porque ninguém é de ferro, né? 😄
-            Basicamente, tô construindo minha jornada na tecnologia enquanto equilibro código, 
-            café e uns bons momentos no mundo virtual.
+            gosto de me aventurar no <span class="logo-name">World of Warcraft</span>, porque ninguém é de ferro, né? 😄
+            Basicamente, tô construindo minha jornada na tecnologia enquanto equilibro <span class="logo-name">código, café e uns bons momentos no mundo virtual</span>.
           </p>
           <div class="about-buttons-data">
             <!-- Links-->
             <div class="buttons-container">
-              <a href="${perfil.html_url}" target="_blank"class="botao">
+              <a href="${perfil.html_url || 'https://github.com/outwake'}" target="_blank"class="botao">
                 GitHub</a>
               <a href="https://docs.google.com/document/d/1HWHTd4mHSKeCGTL6ZTaFdFBplPC5994T/edit?usp=sharing&ouid=106044141964701174609&rtpof=true&sd=true" target="_blank" class="botao-outline"> Curriculo</a>
             </div>
@@ -49,18 +48,22 @@ async function getAboutGitHub(){
             <!--Dados-->
             <div class="data-container">
               <div class="data-item">
-                <span class="data-number">${perfil.followers}</span>
+                <span class="data-number" data-target="${perfil.followers || 8}">0</span>
                 <span class="data-label"> Seguidores</span>
               </div>
 
               <div class="data-item">
-                <span class="data-number">${perfil.public_repos}</span>
+                <span class="data-number" data-target="${perfil.public_repos || 16}">0</span>
                 <span class="data-label"> Repositórios</span>
               </div>
             </div>
           </div>
         </article>
         `
+        
+        // Adiciona os números para serem observados
+        setTimeout(() => observeElements('.data-number'), 100);
+        
     } catch (error) {
         console.error('Erro ao buscar dados no GitHub', error);
     }
@@ -86,9 +89,39 @@ async function getProjectsGitHub(){
 
         // Combina tudo e remove duplicatas pelo nome
         const todosRepos = [...(Array.isArray(reposPessoais) ? reposPessoais : []), ...(Array.isArray(reposOrg) ? reposOrg : [])];
-        const repositorios = todosRepos.filter((repo, index, self) =>
-            index === self.findIndex(r => r.name === repo.name)
+        let repositorios = todosRepos.filter((repo, index, self) =>
+            repo.name && index === self.findIndex(r => r.name === repo.name)
         );
+
+        // Fallback caso a API bloqueie por limite de taxa
+        if (repositorios.length === 0) {
+            repositorios = [
+                {
+                    name: 'e-commerce-backend',
+                    description: 'API completa para e-commerce desenvolvida com NestJS e TypeORM.',
+                    language: 'TypeScript',
+                    html_url: 'https://github.com/outwake/e-commerce-backend',
+                    homepage: '',
+                    topics: ['nestjs', 'typeorm', 'api']
+                },
+                {
+                    name: 'portfolio-lary',
+                    description: 'Meu portfólio pessoal construído com HTML, CSS e JavaScript Vanilla.',
+                    language: 'HTML',
+                    html_url: 'https://github.com/outwake/portfolio',
+                    homepage: 'https://outwake.github.io/portfolio/',
+                    topics: ['html', 'css', 'javascript']
+                },
+                {
+                    name: 'task-manager',
+                    description: 'Aplicação de gerenciamento de tarefas usando React e Node.js.',
+                    language: 'JavaScript',
+                    html_url: 'https://github.com/outwake/task-manager',
+                    homepage: '',
+                    topics: ['react', 'nodejs']
+                }
+            ];
+        }
 
         swiperWrapper.innerHTML = '';
 
@@ -181,6 +214,7 @@ async function getProjectsGitHub(){
         })
 
         iniciarSwiper();
+        observeElements('.project-card');
         
     }  catch (error) {
         console.error('Erro ao buscar dados no GitHub', error);
@@ -323,9 +357,20 @@ if (botaoTema && iconeTema) {
     });
 }
 
-if(localStorage.getItem("tema") === "dark"){
+// Verifica o tema salvo ou usa o dark como padrão
+const temaSalvo = localStorage.getItem("tema");
+
+// Se for estritamente light, removemos a classe dark
+if (temaSalvo === "light") {
+    document.body.classList.remove("dark");
+    if (iconeTema) {
+        iconeTema.classList.remove("ph-sun");
+        iconeTema.classList.add("ph-moon");
+    }
+} else {
+    // Caso contrário (dark ou vazio), garante que está no modo escuro
     document.body.classList.add("dark");
-    if(iconeTema) {
+    if (iconeTema) {
         iconeTema.classList.remove("ph-moon");
         iconeTema.classList.add("ph-sun");
     }
@@ -391,3 +436,71 @@ if (mensagemTextarea) {
         this.style.height = this.scrollHeight + 'px';
     });
 }
+
+// ==========================================
+// Animação de Scroll (Fade in / Fade out) e Numérica
+// ==========================================
+const scrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show-element');
+            
+            // Se for número, inicia o contador
+            if (entry.target.classList.contains('data-number') && !entry.target.classList.contains('animated')) {
+                entry.target.classList.add('animated');
+                animarNumero(entry.target);
+            }
+        } else {
+            entry.target.classList.remove('show-element');
+            if (entry.target.classList.contains('data-number')) {
+                entry.target.classList.remove('animated'); // Permite animar de novo se sair e voltar
+                entry.target.innerText = '0'; // Reseta o texto
+            }
+        }
+    });
+}, {
+    threshold: 0.15
+});
+
+function animarNumero(elemento) {
+    const target = +elemento.getAttribute('data-target');
+    if (!target) {
+        elemento.innerText = '0';
+        return;
+    }
+    const duration = 2000; // 2 segundos
+    const increment = target / (duration / 16);
+    let current = 0;
+    
+    const updateCounter = () => {
+        current += increment;
+        if (current < target) {
+            elemento.innerText = Math.ceil(current);
+            requestAnimationFrame(updateCounter);
+        } else {
+            elemento.innerText = target;
+        }
+    };
+    updateCounter();
+}
+
+function observeElements(selector) {
+    const elements = document.querySelectorAll(selector);
+    elements.forEach((el) => {
+        if (!el.classList.contains('hidden-element')) {
+            el.classList.add('hidden-element');
+            scrollObserver.observe(el);
+        }
+    });
+}
+
+// Observa os elementos estáticos assim que possível
+setTimeout(() => {
+    observeElements('.hero-content');
+    observeElements('.about-container');
+    observeElements('.projects-container h2');
+    observeElements('.stacks-container h2');
+    observeElements('.stack-item');
+    observeElements('.contact-info');
+    observeElements('#formulario');
+}, 100);
