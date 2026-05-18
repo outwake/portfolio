@@ -42,7 +42,7 @@ async function getAboutGitHub(){
             <div class="buttons-container">
               <a href="${perfil.html_url || 'https://github.com/outwake'}" target="_blank"class="botao">
                 GitHub</a>
-              <a href="https://docs.google.com/document/d/1HWHTd4mHSKeCGTL6ZTaFdFBplPC5994T/edit?usp=sharing&ouid=106044141964701174609&rtpof=true&sd=true" target="_blank" class="botao-outline"> Curriculo</a>
+              <a href="https://drive.google.com/drive/folders/1OQ-2fZgPr9L-VfFgdmiOloURmmBbfnTe?usp=drive_link" target="_blank" class="botao-outline"> Curriculo</a>
             </div>
 
             <!--Dados-->
